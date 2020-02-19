@@ -5,7 +5,6 @@ const setupProxy = require('./setupProxy')
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = merge(common, {
   mode: 'development',
   module: {
@@ -21,12 +20,9 @@ module.exports = merge(common, {
       }
     ]
   },
-  output: {
-    filename: 'js/[name].[hash:8].bundle.js',
-  },
   devServer: {
     contentBase: path.resolve(__dirname, '../dist'),
-    historyApiFallback: true,    // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
+    // historyApiFallback: true,    // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
     // host: process.env.HOST || '0.0.0.0',
     open: true,
     port: 9000,
@@ -35,15 +31,6 @@ module.exports = merge(common, {
     proxy: setupProxy
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      inject: 'body',
-      hash: false
-    }),
-    /* HotModuleReplacementPlugin是webpack热更新的插件，设置devServer.hot为true，
-    并且在plugins中引入HotModuleReplacementPlugin插件即可。
-    还需要注意的是我们开启了hot，那么导出不能使用chunkhash，需要替换为hash。
-    */
     new webpack.HotModuleReplacementPlugin()
   ]
 });

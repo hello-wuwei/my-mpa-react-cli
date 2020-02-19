@@ -43,15 +43,6 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',   // 为什么不是 '../public/index.html'，我的理解是无论与要用的template是不是在一个目录，都是从根路径开始查找
-      template: 'public/index.html',
-      inject: 'body',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-    }),
     new CleanWebpackPlugin(),
     // style样式是通过style-loader预处理，插入到了head标签内，但是我们平常写样式的时候，一定是通过引入外部css文件进行样式引入的(配合rules中的MiniCssExtractPlugin.loader)，即拆分css文件打包
     new MiniCssExtractPlugin({

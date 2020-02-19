@@ -1,8 +1,14 @@
-import React from 'react';
-import './style/common.less';
+import React from 'react'
+import './style/common.less'
 import background from './assets/images/picture.png'
 import Icon from './component/Icon'
-
+const a = '1'
+console.log(a)
+const b = {
+  c: '6',
+  d: 7,
+  f: 3+5
+}
 function App() {
   return (
     <div className="App">
@@ -16,7 +22,7 @@ function App() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
